@@ -46,57 +46,6 @@
     --shadow-soft: 0 6px 14px rgba(0, 0, 0, 0.6);
 }
 
-/* Intro 全屏覆盖层 */
-#intro-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-
-/* 淡出状态 */
-#intro-screen.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* 中心内容 */
-.intro-icon {
-    text-align: center;
-}
-
-/* 提示文字 */
-.intro-hint {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    color: #666;
-    letter-spacing: 0.08em;
-    opacity: 0.8;
-}
-
-/* 复用之前的 icon-morph */
-.icon-morph {
-    width: 160px;
-    height: 160px;
-    position: relative;
-}
-
-.icon-morph .icon {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: opacity 0.15s linear;
-    pointer-events: none;
-}
-
 
 /* 自定义样式 - 与原网站完全一致 */
 .page-header {
@@ -181,7 +130,7 @@
 .contact-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #212529;
+    background-color: #004488;
     color: white;
     text-decoration: none;
     padding: 0.6rem 1.2rem;
@@ -193,7 +142,7 @@
 }
 
 .contact-btn:hover {
-    background-color: #343a40;
+    background-color: #0048e4;
     color: white;
     text-decoration: none;
     transform: translateY(-2px);
@@ -423,4 +372,15 @@ footer {
     .post-author-name {
         font-size: 1rem;
     }
+}
+
+/* 深色模式下班级墙字体颜色修正 */
+[data-theme="dark"] .post-author-name,
+[data-theme="dark"] .post-title,
+[data-theme="dark"] .post-content {
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .post-date {
+    color: var(--text-muted);
 }
