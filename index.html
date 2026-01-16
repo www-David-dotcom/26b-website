@@ -280,6 +280,83 @@
     
     <script>
 
+const LONG_PRESS_TIME = 3000;
+let longPressTimer = null;
+let glitchActive = false;
+
+function triggerGlitch() {
+    if (!glitchActive) {
+        document.body.classList.add('glitch-mode');
+        glitchActive = true;
+        console.log('Glitch mode activated!');
+    }
+}
+
+function resetGlitch() {
+    if (glitchActive) {
+        document.body.classList.remove('glitch-mode');
+        glitchActive = false;
+        console.log('Glitch mode deactivated!');
+    }
+}
+
+// 鼠标长按
+document.body.addEventListener('mousedown', (e) => {
+    if (e.target === document.body) longPressTimer = setTimeout(triggerGlitch, LONG_PRESS_TIME);
+});
+document.body.addEventListener('mouseup', () => clearTimeout(longPressTimer));
+
+// 触摸长按
+document.body.addEventListener('touchstart', (e) => {
+    if (e.target === document.body) longPressTimer = setTimeout(triggerGlitch, LONG_PRESS_TIME);
+});
+document.body.addEventListener('touchend', () => clearTimeout(longPressTimer));
+
+// 双击退出
+document.body.addEventListener('dblclick', resetGlitch);
+
+(function () {
+    const intro = document.getElementById('intro-screen');
+    const schoolIcon = document.querySelector('#intro-screen .icon-school');
+    const classIcon = document.querySelector('#intro-screen .icon-class');
+
+    if (!intro || !schoolIcon || !classIcon) return;
+
+    // 锁定页面滚动
+    document.body.style.overflow = 'hidden';
+
+    // 鼠标横向渐变
+    intro.addEventListener('mousemove', (e) => {
+        const width = window.innerWidth;
+        const progress = Math.min(Math.max(e.clientX / width, 0), 1);
+        schoolIcon.style.opacity = 1 - progress;
+        classIcon.style.opacity = progress;
+    });
+
+    let entered = false;
+
+    function enterSite() {
+        if (entered) return;
+        entered = true;
+
+        intro.classList.add('fade-out');
+
+        // 恢复页面滚动
+        document.body.style.overflow = '';
+
+        // 完全移除 intro
+        setTimeout(() => {
+            intro.remove();
+        }, 600);
+    }
+
+    // 任意键 / 点击 / 触摸进入
+    window.addEventListener('keydown', enterSite, { once: true });
+    intro.addEventListener('click', enterSite, { once: true });
+    intro.addEventListener('touchstart', enterSite, { once: true });
+})();
+
+
     const root = document.documentElement;
     const toggleBtn = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
