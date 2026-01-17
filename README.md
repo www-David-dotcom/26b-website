@@ -1,16 +1,22 @@
-# React + Vite
+# Branch: Refactor-React 
+这个分支添加了react作为前端框架，把所有内容都进行了组建化处理，运行（开发测试）方式如下：
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```bash
+npm install
+npm run dev
+```
 
-Currently, two official plugins are available:
+## Components
+- Footer: 页脚组件
+- Header：页面头部组件
+- IntroScreen：引入页面组件
+- NavBar：导航栏组件
+- ThemeToggle：主题切换组件（暗黑/明亮模式）
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Pages
+- Activities：活动页面
+- Home：首页
+- Contact：联系方式页面
+- Journal：班级日志页面
+- Introduction：班级介绍页面
+- Wall: 留言墙页面

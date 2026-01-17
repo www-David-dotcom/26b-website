@@ -1,117 +1,42 @@
-/* 自定义样式 - 与原网站完全一致 */
-.page-header {
-    background-color: #f8f9fa;
-    padding: 0.5rem 0;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #dee2e6;
+/* ========== 全局变量定义 ========== */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --header-bg: #ffffff;
+    --navbar-bg: #f8f9fa;
+    --link-color: #0d6efd;
+    --muted-color: #6c757d;
 }
 
-.school-name {
-    color: #1a56a8;
-    font-weight: bold;
-    font-family: '华文行楷', cursive;
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --border-color: #444444;
+    --header-bg: #1a1a1a;
+    --navbar-bg: #1a1a1a;
+    --link-color: #6ea8fe;
+    --muted-color: #adb5bd;
 }
 
-.class-name {
-    color: #fdad1a;
-    font-weight: bold;
-    font-family: '华文行楷', cursive;
-    font-weight: 700;
-}
-
-.icon-circle {
-    background-color: #1a56a8;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-}
-
-.custom-navbar {
-    background-color: #ffc107 !important;
-    padding: 0.5rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.nav-custom-btn {
-    color: #212529 !important;
-    font-weight: 500;
-    padding: 0.75rem 1.5rem !important;
-    margin: 0 0.25rem;
-    border-radius: 8px !important;
-    transition: all 0.3s ease;
-    text-decoration: none; /* Add this as usually links have underline */
-}
-
-.nav-custom-btn:hover {
-    background-color: rgba(255, 255, 255, 0.3) !important;
-    transform: translateY(-2px);
-    color: #212529 !important; /* Ensure color stays same on hover */
-}
-
-/* React Router NavLink active class is usually 'active' too */
-.nav-custom-btn.active {
-    background-color: rgba(255, 255, 255, 0.4) !important;
-    font-weight: 600;
-}
-
-.contact-btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: #212529;
-    color: white;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-family: 'SimSun', '宋体', serif;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    cursor: pointer;
-}
-
-.contact-btn:hover {
-    background-color: #343a40;
-    color: white;
-    text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.contact-icon {
-    font-size: 1.1rem;
-    margin-right: 0.5rem;
-    color: white;
-}
-
-.contact-text {
-    font-weight: 500;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .contact-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-        margin-top: 0.5rem;
-    }
-    
-    .contact-icon {
-        font-size: 1rem;
-    }
-}
+/* ========== 全局样式与重置 ========== */
 
 html, body {
     height: 100%;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+/* Override Bootstrap defaults for body */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
 }
 
 #root {
@@ -231,77 +156,20 @@ footer {
 
 .post-card:hover {
     box-shadow: 0 8px 15px rgba(26, 86, 168, 0.15);
-    transform: translateY(-2px);
 }
 
-/* 作者头像样式 */
-.avatar-circle {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #1a56a8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
+[data-theme="dark"] .post-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
 }
 
-/* 作者姓名样式 */
-.post-author-name {
-    color: #333;
-    font-weight: 600;
-    font-family: '华文行楷', cursive; /* 与其他页面一致的字体 */
-    font-size: 1.1rem;
+[data-theme="dark"] .alert-info {
+    background-color: #1a3a52;
+    color: #a3c9e8;
+    border-color: #2a5a82;
 }
 
-/* 发布日期样式 */
-.post-date {
-    font-size: 0.85rem;
-    color: #666;
-}
-
-/* 帖子标题样式 */
-.post-title {
-    color: #333;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
-
-/* 帖子内容样式 */
-.post-content {
-    color: #444;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
-}
-
-/* 点赞数样式 */
-.post-likes {
-    color: #dc3545;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.post-likes i {
-    color: #dc3545;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .post-card {
-        padding: 1.25rem;
-        border-radius: 12px;
-    }
-    
-    .avatar-circle {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .post-author-name {
-        font-size: 1rem;
-    }
+[data-theme="dark"] footer {
+    background-color: #0d0d0d !important;
 }

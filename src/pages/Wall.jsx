@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
+import styles from './Wall.module.css';
 
 const Wall = () => {
     const [posts, setPosts] = useState([]);
@@ -49,29 +50,29 @@ const Wall = () => {
 
             return (
                 <div className="col-12 col-md-6 col-lg-4">
-                    <div className="post-card">
-                        <div className="post-author-info d-flex align-items-center mb-3">
-                            <div className="post-author-avatar me-3">
-                                <div className="avatar-circle">
-                                    <span className="avatar-text">{avatarText}</span>
+                    <div className={styles.postCard}>
+                        <div className="d-flex align-items-center mb-3">
+                            <div className="me-3">
+                                <div className={styles.avatarCircle}>
+                                    <span>{avatarText}</span>
                                 </div>
                             </div>
-                            <div className="post-author-meta flex-grow-1">
+                            <div className="flex-grow-1">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <span className="post-author-name">{authorName}</span>
-                                    <span className="post-date text-muted small">{formattedDate}</span>
+                                    <span className={styles.postAuthorName}>{authorName}</span>
+                                    <span className={`${styles.postDate} text-muted small`}>{formattedDate}</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <h5 className="post-title fw-bold mb-2">{post.title || '无标题'}</h5>
+                        <h5 className={`${styles.postTitle} fw-bold mb-2`}>{post.title || '无标题'}</h5>
                         
-                        <div className="post-content mb-3">
+                        <div className={`${styles.postContent} mb-3`}>
                             {post.content}
                         </div>
                         
-                        <div className="post-footer d-flex justify-content-end">
-                            <div className="post-likes">
+                        <div className="d-flex justify-content-end">
+                            <div className={styles.postLikes}>
                                 <i className="fas fa-heart me-1"></i>
                                 <span className="likes-count">{post.likes || 0}</span>
                             </div>
@@ -82,7 +83,7 @@ const Wall = () => {
     }
 
     return (
-        <div className="page-content active">
+        <div className={`${styles.pageContent} active`}>
              <div className="container">
                 <div className="text-center mb-5">
                     <h2 className="mb-3"><i className="fas fa-pen-square me-2"></i>班级墙</h2>
@@ -107,7 +108,7 @@ const Wall = () => {
                 
                 {!loading && !error && posts.length === 0 && (
                      <div className="text-center my-5">
-                        <div className="empty-state py-5">
+                        <div className={`${styles.emptyState} py-5`}>
                             <i className="fas fa-comment-slash fa-4x text-muted mb-4"></i>
                             <h4 className="text-muted mb-3">暂无帖子</h4>
                             <p className="text-muted">还没有人发帖，快来分享你的想法吧！</p>

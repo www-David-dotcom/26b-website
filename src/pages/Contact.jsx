@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import styles from './Contact.module.css';
 
 const Contact = () => {
     useEffect(() => {
@@ -7,14 +8,14 @@ const Contact = () => {
     }, []);
 
     return (
-        <div className="page-content active">
+        <div className={`${styles.pageContent} active`}>
             <div className="text-center">            
                 <div className="alert alert-info mt-4">
                     <i className="fas fa-info-circle me-2"></i>
                     网站正在建设中，敬请期待。
                 </div>
                 {/* 新增联系邮箱部分 */}
-                <div className="contact-email mt-4 p-3 bg-light rounded">
+                <div className={`${styles.contactEmail} mt-4 p-3 rounded`}>
                     <h5 className="mb-3">如有疑问请联系：</h5>
                     <div className="d-inline-block">
                         <a href="mailto:lilinfeng200801@gmail.com" className="btn btn-outline-primary btn-lg">
